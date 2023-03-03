@@ -10,7 +10,7 @@
         "shortDescription": "These labs provide support for the Curiosity High Pin Count (HPC) development board using the PIC18F25Q71.",
         "ide": {
             "name": "MPLAB X",
-            "semverRange": ">=6.05.0"
+            "semverRange": ">=6.5.0"
         },
         "compiler": [
             {
