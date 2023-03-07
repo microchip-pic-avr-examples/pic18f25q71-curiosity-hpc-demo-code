@@ -37,11 +37,18 @@
             }
         },
         "author": "Jason Layton",
-        "peripherals": ["ADCC","TMR0","TMR1","UART","PWM"],
+        "peripherals": [
+			"ADCC",
+			"TMR0",
+			"TMR1",
+			"UART",
+			"PWM"
+		],
         "keywords": [
-        "Getting Started",
-        "Curiosity",
-        "Melody"],
+			"Getting Started",
+			"Curiosity",
+			"Melody"
+		],
         "additionalData": {
             "longDescription": {
                 "metaDataVersion": "1.0.0",
