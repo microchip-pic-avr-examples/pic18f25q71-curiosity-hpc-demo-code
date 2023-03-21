@@ -4,7 +4,7 @@
 
 # PIC18F25Q71 Curiosity High Pin Count (HPC) Lab Code
 
-The following demo project contains labs designed for Microchip’s Curiosity High Pin Count (HPC) Development board, whih supports Microchip's 28 and 40-pin 8-bit PIC® microcontrollers (MCUs). Each lab includes a brief description of its purpose and offers exercises that demonstrate basic PIC device capabilities, as well as peripherals and registers. These can also be used to test the condition of the board. MPLAB Code Configurator (MCC) was used for developing these examples. MCC is an easy-to-use plugin tool for MPLAB X IDE which can be used to configure the peripherals and generate drivers to use in the application code. All labs are written in C language and are compatible with the latest XC8 compilers.
+The following demo project contains labs designed for Microchip’s Curiosity HPC Development board, which supports Microchip's 28 and 40-pin 8-bit PIC® microcontrollers (MCUs). Each lab includes a brief description of its purpose and offers exercises that demonstrate basic PIC device capabilities, as well as peripherals and registers. These can also be used to test the condition of the board. MPLAB® Code Configurator (MCC) was used for developing these examples. MCC is an easy-to-use plugin tool for MPLAB X IDE which can be used to configure the peripherals and generate drivers to use in the application code. All labs are written in C language and are compatible with the latest XC8 compilers.
 
 ##### Curiosity HPC Development Board:
 ![Curiosity High Pin Count (HPC) Development Board](images/hpc-board.PNG)
@@ -42,17 +42,17 @@ The labs in this project are presented in the same order as they appear on the p
 ## Inputs and Display
 - Push Button Switch – One on-board push button switch (S1) is utilized. S1 is connected to the PIC MCU RB4 pin and is used to switch to the next lab. <br />
 - Potentiometer – A 10kΩ potentiometer connected to the RA0 pin is used in labs requiring analog inputs <br />
-- LEDs - The Curiosity HPC Development Board has four LEDs (D2 through D5) that are connected to I/O ports RA4 through RA7, respectively. These LEDs are used to display the output of the different labs. <br/>
+- LEDs – The Curiosity HPC Development Board has four LEDs (D2 through D5) that are connected to I/O ports RA4 through RA7, respectively. These LEDs are used to display the output of the different labs. <br/>
 
 ### <u>Lab 1: Hello World</u>
 #### Introduction
 This lab shows how to turn on an LED.
 
 #### Hardware Effects
-LED D2 will light up and stays that way.
+LED D2 lights up and stays that way.
 
 #### Summary
-The LEDs are connected to the input-output (I/O) pins. First, the I/O pin must be configured to be an output. In this case, when one of these pins is driven high (LED_D2 = 1), the LED will turn on. These two logic levels are derived from the power pins of the PIC MCU. Since the PIC's power pin (V<sub>DD</sub>) is connected to 5V or 3.3V and the source (V<sub>SS</sub>) to ground (0V), a logic level of `‘1’` is equivalent to 5V or 3.3V, and a logic level of `‘0’` is 0V.
+The LEDs are connected to the input-output (I/O) pins. First, the I/O pin must be configured to be an output. In this case, when one of these pins is driven high (LED_D2 = 1), the LED will turn on. These two logic levels are derived from the power pins of the PIC MCU. Since the PIC's power pin (V<sub>DD</sub>) is connected to 5V or 3.3V and the source (V<sub>SS</sub>) to ground (0V), a logic level of '`1`' is equivalent to 5V or 3.3V, and a logic level of '`0`' is 0V.
 
 
 ### <u>Lab 2: Blink</u>
@@ -63,7 +63,7 @@ This lab shows how to blink an LED.
 LED D2 blinks at a rate of approximately 1.5s.
 
 #### Summary
-One way to create a delay is to spend time decrementing a value. In assembly, the timing can be accurately programmed since the user will have direct control on how the code is executed. In C, the compiler takes the C and compiles it into assembly before creating the file to program to the actual PIC MCU (HEX file). Because of this, it is hard to predict exactly how many instructions it takes for a line of C to execute. For a more accurate timing in C, this lab uses the Timer1 (TMR1) MCU module to produce the desired delay. Timer1 is discussed in Lab 7: Timers.
+One way to create a delay is to spend time decrementing a value. In assembly, the timing can be accurately programmed since the user will have direct control on how the code is executed. In C, the compiler takes the C code and compiles it into assembly before creating the file to program to the actual PIC MCU (HEX file). Because of this, it is hard to predict exactly how many instructions it takes for a line of C to execute. For a more accurate timing in C, this lab uses the Timer1 (TMR1) MCU module to produce the desired delay. Timer1 is discussed in Lab 7: Timers.
 
 
 ### <u>Lab 3: Rotate</u>
@@ -74,7 +74,7 @@ This lab is built on Lab 1 and 2, which showed how to light up an LED and then m
 LEDs D2, D3, D4 and D5 light up in turn every 500 milliseconds. Once D5 is lit, D2 lights up and the pattern repeats.
 
 #### Summary
-In C, we use Binary Left Shift and Right Shift Operators (<< and >>, respectively) to move bits around in the registers. To create a rotating pattern on the LEDs, a temporary variable is declared and initialized with a value of `'1'`. Every 500 ms, the value of this variable is left-shifted by one. If the value exceeds `` `b1000``, the variable is reset to a value of `'1'`. The value is then written to the uppoer MSbs of LATA by right shifting the value again by four. The upper four MSbs of LATA control the LEDs on the HPC board.
+In C, we use Binary Left Shift and Right Shift Operators (<< and >>, respectively) to move bits around in the registers. To create a rotating pattern on the LEDs, a temporary variable is declared and initialized with a value of '`1`'. Every 500 ms, the value of this variable is left-shifted by one. If the value exceeds `` `b1000``, the variable is reset to a value of '`1`'. The value is then written to the uppoer MSbs of LATA by right shifting the value again by four. The upper Most Significant bits (MSbs) of LATA control the LEDs on the HPC board.
 
 
 ### <u>Lab 4: Analog-to-Digital Conversion (ADC)</u>
@@ -96,7 +96,7 @@ This lab combines all ones to produce a variable speed rotating LED display that
 Rotate the on-board potentiometer to change the speed of the LEDs shift. <br />
 The ADC value will be printed on UART TX pin which is connected to pin RC6 through PPS. Connect this pin to the Virtual COM port's TX pin using a jumper wire to use the onboard serial to USB feature.
 #### Summary
-A crucial step in this lab is to check if the ADC value is `'0'`. If it does not perform the zero check, and the ADC result is zero, the LEDs will rotate at an incorrect speed. This is an effect of the delay value underflowing from 0 to 255.
+A crucial step in this lab is to check if the ADC value is '`0`'. If it does not perform the zero check, and the ADC result is zero, the LEDs will rotate at an incorrect speed. This is an effect of the delay value underflowing from 0 to 255.
 
 ###### Program Flow
 ![Lab 5 Program Flow](images/lab5-program-flow.PNG)
@@ -106,7 +106,7 @@ A crucial step in this lab is to check if the ADC value is `'0'`. If it does not
 In this lab, the PIC MCU generates a PWM signal that lights an LED with the potentiometer, thereby controlling the brightness.
 #### Hardware Effects
 Rotate the potentiometer to adjust the brightness of LED D5. <br />
-The ADC value will be printed on UART TX pin which is connected to pin RC6 through PPS. Connect RC6 to the TX pin of the Virtual COM port through a jumper wire to use the on-board USB-to-UART serial converter.
+The ADC value will be printed on the UART TX pin which is connected to the RC6 pin through PPS. Connect RC6 to the TX pin of the Virtual COM port through a jumper wire to use the on-board USB-to-UART serial converter.
 #### Summary
 PWM is a scheme that provides power to a load by quickly switching between fully ON and fully OFF states. The PWM signal resembles a square wave, where the high portion of the signal is considered the ON state and the low portion of the signal is considered the OFF state. The high portion, also known as the pulse width, can vary in time and is defined in steps. A longer, high ON time will illuminate the LED brighter. The frequency or period of the PWM does not change. The PWM period is defined as the duration of one cycle or the total amount of ON and OFF time combined. Another important term to take note of is the PWM duty cycle, which is the ratio of the pulse width to the period and is often expressed in percentage. A lower duty cycle corresponds to less power applied and a higher duty cycle corresponds to more power applied.
 
@@ -134,16 +134,16 @@ This lab demonstrates the advantage of using interrupts over polling. An interru
 #### Introduction
 This lab introduces Sleep mode. The `SLEEP()` function is used to put the device into a low-power Standby mode.
 #### Hardware Effects
-Once this lab is in Running state, the WDT will start counting. While in Sleep mode, LEDs D2/D4 and LEDs D3/D5 are turned ON and OFF respectively. Pressing the switch will not move to the next lab since the PIC is in Sleep mode. After the WDT has reached its period, which is approximately 4s for this lab, the PIC exits sleep mode and the four LEDs, D2 through D5, are toggled.
+Once this lab is in Running state, the WDT will start counting. While in Sleep Mode, LEDs D2/D4 and LEDs D3/D5 are turned ON and OFF respectively. Pressing the switch will not move to the next lab since the PIC is in Sleep mode. After the WDT has reached its period, which is approximately 4s for this lab, the PIC exits sleep mode and the four LEDs, D2 through D5, are toggled.
 #### Summary
 The Power-Down mode is entered by executing the `SLEEP` instruction. Upon entering Sleep mode, there are different conditions that can exist such as:
 
-- WDT will be cleared but keeps running, if enabled for operation during Sleep
+- WDT is cleared but keeps running, if enabled for operation during Sleep
 - PD bit of the STATUS register is cleared
 - TO bit of the STATUS register is set
 - CPU clock is disabled
 
-Different PICs have different conditions once they enter Sleep mode so it is recommended that the reader refer to the datasheet to know more of these conditions. <br />
+Each PIC has different conditions for entering and exiting Sleep mode. Refer to the respective data sheet to find out more about them. <br />
 The Watchdog Timer (WDT) is a system timer that generates a Reset if the firmware does not issue a CLRWDT instruction within the time-out period. WDT is typically used to recover the system from unexpected events. When the device enters Sleep, the WDT is cleared. If the WDT is enabled during Sleep, the WDT resumes counting. When the device exits Sleep, the WDT is cleared again. When a WDT time-out occurs while the device is in Sleep, no Reset is generated.
 
 
