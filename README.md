@@ -134,7 +134,7 @@ This lab demonstrates the advantage of using interrupts over polling. An interru
 #### Introduction
 This lab introduces Sleep mode. The `SLEEP()` function is used to put the device into a low-power Standby mode.
 #### Hardware Effects
-Once this lab is in Running state, the WDT will start counting. While in Sleep Mode, LEDs D2/D4 and LEDs D3/D5 are turned ON and OFF respectively. Pressing the switch will not move to the next lab since the PIC is in Sleep mode. After the WDT has reached its period, which is approximately 4s for this lab, the PIC exits sleep mode and the four LEDs, D2 through D5, are toggled.
+Once this lab is in Running state, the WDT will start counting. While in Sleep mode, LEDs D2/D4 and LEDs D3/D5 are turned ON and OFF respectively. Pressing the switch will not move to the next lab since the PIC is in Sleep mode. After the WDT has reached its period, which is approximately 4s for this lab, the PIC exits Sleep mode and the four LEDs, D2 through D5, are toggled.
 #### Summary
 The Power-Down mode is entered by executing the `SLEEP` instruction. Upon entering Sleep mode, there are different conditions that can exist such as:
 
@@ -144,7 +144,7 @@ The Power-Down mode is entered by executing the `SLEEP` instruction. Upon enteri
 - CPU clock is disabled
 
 Each PIC has different conditions for entering and exiting Sleep mode. Refer to the respective data sheet to find out more about them. <br />
-The Watchdog Timer (WDT) is a system timer that generates a Reset if the firmware does not issue a CLRWDT instruction within the time-out period. WDT is typically used to recover the system from unexpected events. When the device enters Sleep, the WDT is cleared. If the WDT is enabled during Sleep, the WDT resumes counting. When the device exits Sleep, the WDT is cleared again. When a WDT time-out occurs while the device is in Sleep, no Reset is generated.
+The WDT is a system timer that generates a Reset if the firmware does not issue a `CLRWDT` instruction within the time-out period. WDT is typically used to recover the system from unexpected events. When the device enters Sleep, the WDT is cleared. If the WDT is enabled during Sleep, the WDT resumes counting. When the device exits Sleep, the WDT is cleared again. When a WDT time-out occurs while the device is in Sleep, no Reset is generated.
 
 
 ### <u>Lab 10: EEPROM</u>
